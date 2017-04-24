@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Phaser vs Easel</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <button id="button" onClick="clickButton()">OK</button>
@@ -10,10 +11,11 @@
         <button id="button" onClick="addText()">Text</button>
         <button id="button" onClick="addPhoto()">Image</button>
         <button id="button" onClick="addPhotoDynamic()">Image Dynamic</button>
+        <button id="button" onClick="showText()">Show / Hide Text</button>
 
         <div id="phaser-container"></div>
         <canvas id="easel-canvas"></canvas>
-        <div id="text-container" style="display: none"></div>
+        <div id="text-container" class="hidden"></div>
         <script src="/js/easeljs-0.8.2.combined.js"></script>
         <script src="/js/phaser.js"></script>
         <script src="/js/datas.js"></script>

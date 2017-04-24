@@ -111,16 +111,10 @@ function addPhotoDynamic() {
         element.input.enableDrag(false, true);
     });
 }
-var onLoaded = function () {
-    var loader = new Phaser.Loader(stages[0]);
-    loader.image('test', 'data/Test.png');
-    //loader.atlasJSONHash('anotherAtlas', '//url/to/texture' , '//url/to/atlas' );
-    loader.onLoadComplete.addOnce(onLoaded);
-    //loader.start();
-    stages[0].load.image('test', 'data/Test.png');
-    console.log('everything is loaded and ready to be used');
-    var element = stages[0].add.sprite(80, 0, 'test');
-};
+function showText(){
+    var target = document.getElementById('text-container');
+    target.classList.toggle('hidden');
+}
 function createFromJson(faces) {
     // Loop the faces
     for (var index in faces) {
@@ -132,7 +126,7 @@ function createFromJson(faces) {
             //console.log(block); 
             if(block.blockType == "text"){
                 var text = block.contentData.htmlContent.replace(/\$quot;/g, "\"").replace(/\&lt;/g, "<").replace(/\&gt;/g, ">");
-                //console.log(text);
+                console.log(text);
                 var paragraph = document.createElement('p');
                 paragraph.innerHTML = text;
                 var textContainer = document.getElementById('text-container');

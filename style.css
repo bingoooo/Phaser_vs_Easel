@@ -1,0 +1,9 @@
+body {
+    background-color: #EEEEEE;
+}
+canvas {
+    margin: 5px;
+}
+.hidden {
+    display: none;
+}
