@@ -1,0 +1,14 @@
+{
+  "name": "phaser_vs_easel",
+  "version": "1.0.0",
+  "description": "Phaser vs Easel Comparison",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamin Dant",
+  "license": "ISC",
+  "dependencies": {
+    "phaser": "^2.6.2"
+  }
+}
