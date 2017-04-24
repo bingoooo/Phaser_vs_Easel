@@ -6,33 +6,41 @@
 var faces = [];
 var elements = [];
 var stages = [];
+var images = [];
 
-// get datas infos
+// get faces infos from datas
 datas.scenes.forEach(function (scenes) {
     scenes.faces.forEach(function (face) {
         faces.push(face);
     })
 });
-// Build a canvas stage per face
-faces.forEach(function () {
-    stages.push(new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, render: render }));
+// Get Image links from faces
+faces.forEach(function (face) {
+    face.blocks.forEach(function (block) {
+        if (block.blockType == "photo") images.push(block.contentData);
+    });
 });
 
-for (var index in faces) {
-    console.log("face", index);
-}
+// Build a canvas stage per face
+faces.forEach(function () {
+    stages.push(new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-container', { preload: preload, create: create, render: render }));
+});
+
 
 
 /**
  * Phaser rendering loop
 */
-function preload(images) {
+function preload() {
     //assets preloading
-    //stages[0].load.image('test', "data/Test.png");
+    images.forEach(function (image) {
+        stages[0].load.image('testLd', "data/pathLd.png");
+    });
 }
 
 function create() {
-    // Creating background for each stage
+
+    createFromJson(faces);
 
 }
 
@@ -54,14 +62,14 @@ function render() {
  */
 function clickButton() {
     console.log('click', faces);
-    elements[0] = fillBackground(0x00FFFF);
+    elements[0] = fillBackground(stages[0], parseInt("00FFFF", 16));
     console.log(elements);
 }
-function fillBackground(color) {
-    var element = stages[1].add.graphics(0, 0);
+function fillBackground(stage, color) {
+    var element = stage.add.graphics(0, 0);
     element.name = 'background';
     element.beginFill(color);
-    element.drawRect(0, 0, stages[1].width, stages[1].height);
+    element.drawRect(0, 0, stage.width, stage.height);
     element.endFill();
     return element;
 }
@@ -81,18 +89,27 @@ function addRectangle(color) {
     });
     console.log(element);
 }
-function addText() {
-    var style = { font: "14px Arial", fill: "#FFFF00", align: "center" };
-    var element = stages[0].add.text(stages[0].world.centerX, stages[0].world.centerY, "test", style);
+function addText(x, y, text, style) {
+    style = style ? style : { font: "14px Arial", fill: "#FFFF00", align: "center" };
+    var element = stages[0].add.text(x ? x : stages[0].world.centerX, y ? y : stages[0].world.centerY, text ? text : "test", style);
     //element.anchor.set(0.5);
     element.inputEnabled = true;
     element.input.enableDrag(true);
 }
 function addPhoto() {
-    var element = stages[0].add.sprite(0,0,'test');
+    var element = stages[0].add.sprite(0, 0, 'testLd');
+    element.inputEnabled = true;
+    element.input.enableDrag(false, true);
 }
-function addPhotoDynamic(){
-        stages[0].load.image('test', "data/Test.png");
+function addPhotoDynamic() {
+    stages[0].load.image('test', "data/Test.png");
+    stages[0].load.start();
+    stages[0].load.onLoadComplete.add(function () {
+        console.log('Load complete');
+        var element = stages[0].add.sprite(0, 0, 'test');
+        element.inputEnabled = true;
+        element.input.enableDrag(false, true);
+    });
 }
 var onLoaded = function () {
     var loader = new Phaser.Loader(stages[0]);
@@ -104,3 +121,23 @@ var onLoaded = function () {
     console.log('everything is loaded and ready to be used');
     var element = stages[0].add.sprite(80, 0, 'test');
 };
+function createFromJson(faces) {
+    // Loop the faces
+    for (var index in faces) {
+        // Creating background for each stage
+        var color = parseInt(faces[index].backgroundColor.slice(1, faces[index].backgroundColor.length), 16);
+        fillBackground(stages[index], color);
+        // Creating each block depending on their types
+        faces[index].blocks.forEach(function(block){
+            //console.log(block); 
+            if(block.blockType == "text"){
+                var text = block.contentData.htmlContent.replace(/\$quot;/g, "\"").replace(/\&lt;/g, "<").replace(/\&gt;/g, ">");
+                //console.log(text);
+                var paragraph = document.createElement('p');
+                paragraph.innerHTML = text;
+                var textContainer = document.getElementById('text-container');
+                textContainer.appendChild(paragraph);
+            }
+        });
+    }
+}
