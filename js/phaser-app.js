@@ -94,10 +94,10 @@ function addText(x, y, text, style) {
     var element = stages[0].add.text(x ? x : stages[0].world.centerX, y ? y : stages[0].world.centerY, text ? text : "test", style);
     //element.anchor.set(0.5);
     element.inputEnabled = true;
-    element.input.enableDrag(true);
+    element.input.enableDrag(true, true);
 }
 function addPhoto() {
-    var element = stages[0].add.sprite(0, 0, 'testLd');
+    var element = stages[0].add.image(0, 0, 'testLd');
     element.inputEnabled = true;
     element.input.enableDrag(false, true);
 }
@@ -106,7 +106,7 @@ function addPhotoDynamic() {
     stages[0].load.start();
     stages[0].load.onLoadComplete.add(function () {
         console.log('Load complete');
-        var element = stages[0].add.sprite(0, 0, 'test');
+        var element = stages[0].add.image(0, 0, 'test');
         element.inputEnabled = true;
         element.input.enableDrag(false, true);
     });
