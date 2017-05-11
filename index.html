@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Phaser vs Easel</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <button id="button" onClick="clickButton()">OK</button>
-        <button id="button" onClick="addRectangle()">Carré</button>
-        <button id="button" onClick="addText()">Text</button>
-        <button id="button" onClick="addPhoto()">Image</button>
-        <button id="button" onClick="addPhotoDynamic()">Image Dynamic</button>
-        <button id="button" onClick="showText()">Show / Hide Text</button>
 
-        <div id="phaser-container"></div>
-        <canvas id="easel-canvas"></canvas>
-        <div id="text-container" class="hidden"></div>
-        <script src="/js/easeljs-0.8.2.combined.js"></script>
-        <script src="/js/phaser.js"></script>
-        <script src="/js/datas.js"></script>
-        <script src="/js/phaser-app.js"></script>
-        <script src="/js/easel-app.js"></script>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>Phaser vs Easel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button id="button" onClick="clickButton()">OK</button>
+    <button id="button" onClick="addRectangle()">Carré</button>
+    <button id="button" onClick="addText()">Text</button>
+    <button id="button" onClick="addPhoto()">Image</button>
+    <button id="button" onClick="addPhotoDynamic()">Image Dynamic</button>
+    <button id="button" onClick="showText()">Show / Hide Text</button>
+
+    <div id="phaser-container"></div>
+    <canvas id="canvas-input" width="640" height="480"></canvas>
+    <canvas id="easel-canvas"></canvas>
+    <!--div class="canvas-text-editor" tabindex="0">
+        <canvas />
+        <textarea></textarea>
+    </div-->
+    <div id="text-container" class="hidden"></div>
+    <script src="/js/easeljs-0.8.2.combined.js"></script>
+    <script src="/js/phaser.js"></script>
+    <script src="/js/phaser-input.js"></script>
+    <script src="js/canvasInput.js"></script>
+    <script src="/js/datas.js"></script>
+    <script src="/js/canvas-input.js"></script>
+    <script src="/js/phaser-app.js"></script>
+    <!--script src="/js/easel-app.js"></script-->
+</body>
+
 </html>

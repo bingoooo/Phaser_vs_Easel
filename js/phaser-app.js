@@ -23,7 +23,7 @@ faces.forEach(function (face) {
 
 // Build a canvas stage per face
 faces.forEach(function () {
-    stages.push(new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-container', { preload: preload, create: create, render: render }));
+    stages.push(new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-container', { preload: preload, create: create, update: update, render: render }));
 });
 
 
@@ -41,6 +41,11 @@ function preload() {
 function create() {
 
     createFromJson(faces);
+    var style = { font: "65px Arial", fill: "#000000", align: "center" };
+    var text = stages[0].add.text(stages[0].world.centerX, stages[0].world.centerY, "- phaser -\nwith a sprinkle of\npixi dust", style);
+    text.anchor.set(0.5);
+
+    text.addColor("#ffff00", 16);
 
 }
 
@@ -111,7 +116,7 @@ function addPhotoDynamic() {
         element.input.enableDrag(false, true);
     });
 }
-function showText(){
+function showText() {
     var target = document.getElementById('text-container');
     target.classList.toggle('hidden');
 }
@@ -122,9 +127,9 @@ function createFromJson(faces) {
         var color = parseInt(faces[index].backgroundColor.slice(1, faces[index].backgroundColor.length), 16);
         fillBackground(stages[index], color);
         // Creating each block depending on their types
-        faces[index].blocks.forEach(function(block){
+        faces[index].blocks.forEach(function (block) {
             //console.log(block); 
-            if(block.blockType == "text"){
+            if (block.blockType == "text") {
                 var text = block.contentData.htmlContent.replace(/\$quot;/g, "\"").replace(/\&lt;/g, "<").replace(/\&gt;/g, ">");
                 console.log(text);
                 var paragraph = document.createElement('p');
