@@ -7,3 +7,10 @@ canvas {
 .hidden {
     display: none;
 }
+#svgExport {
+    width: 90%;
+    margin: 0 auto;
+}
+svg {
+    viewBox: 0 0 100 100;
+}

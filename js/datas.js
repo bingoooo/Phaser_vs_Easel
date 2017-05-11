@@ -1,7 +1,8 @@
 var datas = {
   "backgroundColor": "#ffffff",
   "format": {
-    "id": "10011"
+    "id": "10011",
+    "description" : "cartes 15x14, double volet, pas de couverture, pas d'ajout de scène, scènes min = 2, scènes max = 2"
   },
   "cover": false,
   "scenes": [
