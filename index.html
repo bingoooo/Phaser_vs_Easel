@@ -5,9 +5,256 @@
     <meta charset="utf-8">
     <title>Phaser vs Easel</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+            font-family: 'NovecentowideBold';
+            src: url('fonts/novecentowide-bold-webfont.eot');
+            src: url('fonts/novecentowide-bold-webfont.eot?#iefix') format('embedded-opentype'),
+            url('fonts/novecentowide-bold-webfont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Gothicb';
+            src: url('fonts/Gothicb-webfont.eot');
+            src: url('fonts/Gothicb-webfont.eot?#iefix') format('embedded-opentype'),
+            url('fonts/Gothicb-webfont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('fonts/MontserratRegular.eot');
+            src: url('fonts/MontserratRegular.eot?#iefix') format('embedded-opentype'),
+            url('fonts/MontserratRegular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Museo';
+            src: url('fonts/Museo-sans-500.eot');
+            src: url('fonts/Museo-sans-500.eot?#iefix') format('embedded-opentype'),
+            url('fonts/Museo-sans-500.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'OpenSansBold';
+            src: url('../fonts/OpenSans-Bold.eot');
+            src: url('../fonts/OpenSans-Bold.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/OpenSans-Bold.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'OpenSansSemiBold';
+            src: url('../fonts/OpenSans-Semibold.eot');
+            src: url('../fonts/OpenSans-Semibold.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/OpenSans-Semibold.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'NovecentowideDemiBold';
+            src: url('fonts/Novecento-demibold.eot');
+            src: url('fonts/Novecento-demibold.eot?#iefix') format('embedded-opentype'),
+            url('fonts/Novecento-demibold.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Air Conditioner';
+            src: url('../fonts/AIRCONDI.eot');
+            src: url('../fonts/AIRCONDI.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/AIRCONDI.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Akzidenz-Grotesk BQ';
+            src: url('../fonts/AKZIGBQS.eot');
+            src: url('../fonts/AKZIGBQS.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/AKZIGBQS.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Alex Brush';
+            src: url('../fonts/AlexBrushRegularOTF.eot');
+            src: url('../fonts/AlexBrushRegularOTF.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/AlexBrushRegularOTF.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'BIP';
+            src: url('../fonts/BIP.eot');
+            src: url('../fonts/BIP.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/BIP.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Castellar MT Std';
+            src: url('../fonts/CASTELAR.eot');
+            src: url('../fonts/CASTELAR.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/CASTELAR.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'CDuflos';
+            src: url('../fonts/CDuflosPro.eot');
+            src: url('../fonts/CDuflosPro.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/CDuflosPro-webfont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Curlz MT';
+            src: url('../fonts/CURLZ___.eot');
+            src: url('../fonts/CURLZ___.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/CURLZ___.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Daniel';
+            src: url('../fonts/DANIEL__.eot');
+            src: url('../fonts/DANIEL__.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/DANIEL__.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Edwardian Script ITC';
+            src: url('../fonts/EdwardianScriptITC.eot');
+            src: url('../fonts/EdwardianScriptITC.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/EdwardianScriptITC.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'French Script MT';
+            src: url('../fonts/FrenchScriptMT.eot');
+            src: url('../fonts/FrenchScriptMT.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/FrenchScriptMT.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Georgia Belle Hollow';
+            src: url('../fonts/GeorgiaBelleHollow.eot');
+            src: url('../fonts/GeorgiaBelleHollow.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/GeorgiaBelleHollow.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Century Gothic';
+            src: url('../fonts/GOTHIC.eot');
+            src: url('../fonts/GOTHIC.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/GOTHIC.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Impact';
+            src: url('../fonts/impact.eot');
+            src: url('../fonts/impact.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/impact.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Jellyka Western Princess';
+            src: url('../fonts/JellykaWesternPrincess.eot');
+            src: url('../fonts/JellykaWesternPrincess.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/JellykaWesternPrincess-webfont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'KG Ten Thousand Reasons';
+            src: url('../fonts/KGTenThousandReasons.eot');
+            src: url('../fonts/KGTenThousandReasons.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/KGTenThousandReasons.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Lobster';
+            src: url('../fonts/Lobster1.eot');
+            src: url('../fonts/Lobster1.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/Lobster1-webfont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Mathilde';
+            src: url('../fonts/mathilde.eot');
+            src: url('../fonts/mathilde.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/mathilde.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Parfumerie Script Curly';
+            src: url('../fonts/ParfumerieScriptCurly.eot');
+            src: url('../fonts/ParfumerieScriptCurly.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/ParfumerieScriptCurly.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Uncle Bob MF';
+            src: url('../fonts/UncleBobMF.eot');
+            src: url('../fonts/UncleBobMF.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/UncleBobMF.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Century';
+            src: url('../fonts/century.eot');
+            src: url('../fonts/century.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/century.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Asterism';
+            src: url('../fonts/Asterism.eot');
+            src: url('../fonts/Asterism.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/Asterism.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
 </head>
 
-<body>
+<body style="position: relative;">
     <!--button id="button" onClick="clickButton()">OK</button>
     <button id="button" onClick="addRectangle()">Carré</button>
     <button id="button" onClick="addText()">Text</button>
@@ -15,9 +262,17 @@
     <button id="button" onClick="addPhotoDynamic()">Image Dynamic</button>
     <button id="button" onClick="showText()">Show / Hide Text</button-->
 
+    <!--div id="font" style="position: fixed; top: 10; left: 10; z-index: -1"></div-->
+    <div id="font" style="position: fixed; top: 30px; right: 10px; z-index: -1; background-color: aqua"></div>
     <div id="svgExport"></div>
-    <!--div id="phaser-container"></div>
-    <canvas id="canvas-input" width="640" height="480"></canvas>
+    <div>
+        <canvas id="canvas"></canvas>
+    </div>
+    <div>
+        <canvas id="easel-canvas"></canvas>
+    </div>
+    <!--div id="phaser-container"></div-->
+    <!--canvas id="canvas-input" width="640" height="480"></canvas>
     <canvas id="easel-canvas"></canvas>
     <div class="canvas-text-editor" tabindex="0">
         <canvas />
@@ -28,12 +283,13 @@
     <script src="/js/phaser.js"></script>
     <script src="/js/canvas2svg.js"></script>
     <script src="/js/datas.js"></script>
-    <script src="/js/export2svg.js"></script>
     <!--script src="/js/phaser-input.js"></script>
     <script src="js/canvasInput.js"></script>
     <script src="/js/canvas-input.js"></script>
     <script src="/js/phaser-app.js"></script>
     <script src="/js/easel-app.js"></script-->
+    <script src="/js/export2svg.js"></script>
+    <script src="/js/canvas.js"></script>
 </body>
 
 </html>

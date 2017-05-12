@@ -7,6 +7,8 @@ var faces = [];
 var elements = [];
 var stages = [];
 var images = [];
+var canvasWidth = 280;
+var canvasHeight = 150;
 
 // get faces infos from datas
 datas.scenes.forEach(function (scenes) {
@@ -22,10 +24,12 @@ faces.forEach(function (face) {
 });
 
 // Build a canvas stage per face
-faces.forEach(function () {
-    stages.push(new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-container', { preload: preload, create: create, update: update, render: render }));
-});
+/*faces.forEach(function () {
+    stages.push(new Phaser.Game(canvasWidth, canvasHeight, Phaser.AUTO, 'phaser-container', { preload: preload, create: create, update: update, render: render }));
+});*/
 
+// SVG / Canvas comparison
+stage = new Phaser.Game(canvasWidth, canvasHeight, Phaser.AUTO, 'phaser-container', { preload: preload, create: create, update: update, render: render });
 
 
 /**
@@ -33,19 +37,24 @@ faces.forEach(function () {
 */
 function preload() {
     //assets preloading
+    /*
     images.forEach(function (image) {
         stages[0].load.image('testLd', "data/pathLd.png");
-    });
+    });*/
 }
 
 function create() {
 
-    createFromJson(faces);
+    /*createFromJson(faces);
     var style = { font: "65px Arial", fill: "#000000", align: "center" };
     var text = stages[0].add.text(stages[0].world.centerX, stages[0].world.centerY, "- phaser -\nwith a sprinkle of\npixi dust", style);
     text.anchor.set(0.5);
 
-    text.addColor("#ffff00", 16);
+    text.addColor("#ffff00", 16);*/
+
+    // SVG drawing comparison
+    var style = {font : "14px Arial", fill: "#FFFFFF", align: "center"};
+    var text = stage.add.text(20, 20, "Test", style);
 
 }
 
@@ -54,9 +63,9 @@ function update() {
 }
 
 function render() {
-    stages.forEach(function (stage) {
+    /*stages.forEach(function (stage) {
         stage.debug.inputInfo(32, 32);
-    });
+    });*/
 }
 
 

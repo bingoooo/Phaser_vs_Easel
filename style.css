@@ -2,15 +2,13 @@ body {
     background-color: #EEEEEE;
 }
 canvas {
-    margin: 5px;
+    margin: 0px;
+    width: 280px;
+    height: 150px;
 }
 .hidden {
     display: none;
 }
 #svgExport {
     width: 90%;
-    margin: 0 auto;
-}
-svg {
-    viewBox: 0 0 100 100;
 }
