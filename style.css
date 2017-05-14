@@ -9,6 +9,3 @@ canvas {
 .hidden {
     display: none;
 }
-#svgExport {
-    width: 90%;
-}

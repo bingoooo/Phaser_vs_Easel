@@ -6,33 +6,40 @@ console.log("window Format", window);
 
 //exporting to svg
 
-// creating context for each pages
-var ctx = [];
+// creating context
+//var ctx = new C2S(280, 150);
+var ratio = 0.9
+var ctx = new C2S(window.innerWidth * ratio, Math.floor(window.innerWidth * 15 / 28) * ratio);
 
 // if cover exists
-if (datas.cover != false) ctx.push(new C2S(2800, 1500));
+if (datas.cover != false) {
+    console.log("drawing cover");
+}
 
-// creating for each scenes
+// drawing scenes
 for (var scene in datas.scenes) {
-    ctx.push(new C2S(280, 150));
+    //drawing background
+    console.log("Size :", ctx.width, ctx.height);
+    ctx.fillStyle = datas.backgroundColor;
+    ctx.fillRect(0, 0, ctx.width, ctx.height);
+
+    //drawing faces
+    var toDraw = scene.faces;
+    console.log("drawing scene", scene, toDraw);
+    ctx.fillStyle = "#000000";
+    ctx.strokeRect(5, 5, 10, 10);
+    ctx.fillStyle = "#000000";
+    ctx.strokeRect(270, 140, 10, 10);
+
+    var face = ctx.getSvg();
+
+    var face = document.createElement("div");
+    face.innerHTML = ctx.getSerializedSvg();
+    document.getElementById('svgExport').appendChild(face);
+    console.log(face);
 }
 
 for (var ctxIndex in ctx) {
-    //drawing background
-    console.log("Size :", ctx[ctxIndex].width, ctx[ctxIndex].height);
-    ctx[ctxIndex].fillStyle = datas.backgroundColor;
-    ctx[ctxIndex].fillRect(0, 0, ctx[ctxIndex].width, ctx[ctxIndex].height);
-    ctx[ctxIndex].fillStyle = "#000000";
-    ctx[ctxIndex].strokeRect(5, 5, 10, 10);
-    ctx[ctxIndex].fillStyle = "#000000";
-    ctx[ctxIndex].strokeRect(270, 140, 10, 10);
-
-    var face = ctx[ctxIndex].getSvg();
-
-    var face = document.createElement("div");
-    face.innerHTML = ctx[ctxIndex].getSerializedSvg();
-    document.getElementById('svgExport').appendChild(face);
-    console.log(face);
 }
 
 
