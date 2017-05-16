@@ -7,8 +7,8 @@ console.log("window Format", window);
 // keybinding test
 document.onkeydown = function(event){
     console.log(event);
-    if (event.key == "z" && event.ctrlKey) console.log("back");
-    if (event.key == "Z" && event.ctrlKey) console.log("forward");
+    if (event.keyCode == 90 && event.ctrlKey && event.shiftKey) console.log("forward");
+    else if (event.keyCode == 90 && event.ctrlKey) console.log("back");
 };
 
 //exporting to svg

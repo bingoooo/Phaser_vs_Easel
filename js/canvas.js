@@ -31,6 +31,7 @@ window.onload = function () {
 
 
 document.addEventListener("keyup", function (event) {
+    console.log(event);
     if (event.key == "ArrowRight") {
         if (fontIndex < fontsTable.length - 1) fontIndex++;
         fontType = fontsTable[fontIndex];
