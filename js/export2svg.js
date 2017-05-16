@@ -4,11 +4,18 @@ console.log("exporting", datas);
 console.log("format", datas.format);
 console.log("window Format", window);
 
+// keybinding test
+document.onkeydown = function(event){
+    console.log(event);
+    if (event.key == "z" && event.ctrlKey) console.log("back");
+    if (event.key == "Z" && event.ctrlKey) console.log("forward");
+};
+
 //exporting to svg
 
 // creating context
 //var ctx = new C2S(280, 150);
-var ratio = 0.9
+var ratio = 0.9;
 var ctx = new C2S(window.innerWidth * ratio, Math.floor(window.innerWidth * 15 / 28) * ratio);
 
 // if cover exists

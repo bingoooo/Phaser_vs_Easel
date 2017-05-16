@@ -2,7 +2,11 @@ var datas = {
   "backgroundColor": "#ffffff",
   "format": {
     "id": "10011",
-    "description" : "cartes 15x14, double volet, pas de couverture, pas d'ajout de scène, scènes min = 2, scènes max = 2"
+    "description": "cartes 15x14, double volet, pas de couverture, pas d'ajout de scène, scènes min = 2, scènes max = 2",
+    "fond_perdu": 1.5,
+    "largeur": 303,
+    "hauteur": 143,
+    "dpi": 300
   },
   "cover": false,
   "scenes": [
