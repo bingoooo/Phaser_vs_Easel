@@ -1,3 +1,4 @@
+// default datas
 var datas = {
   "backgroundColor": "#ffffff",
   "format": {
@@ -590,3 +591,32 @@ var datas = {
     }
   ]
 }
+
+// Loading datas
+var url = "/data/prestige.json";
+
+function getDatas(url) {
+  if (self.fetch) {
+    console.log("using fetch");
+    fetch(url)
+      .then(function (response) {
+        if (response.ok) {
+          console.log("fetch response", response);
+          return response.json().then(function(json){
+            datas = json;
+            drawSVG(datas);
+          });
+        } else {
+          console.log("bad server response");
+        }
+      })
+      .catch(function (error) {
+        console.log("error found", error);
+      });
+  } else {
+    console.log("no fetch command, using default http request is required");
+    return { error: "no fetch, http request not implemented" };
+  }
+}
+
+getDatas(url);

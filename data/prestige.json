@@ -1,7 +1,16 @@
 {
   "backgroundColor": "#ffffff",
   "format": {
-    "id": "5501"
+    "id": "5501",
+    "formatSize": {
+      "bleed": "1.5",
+      "face_dpi": "300",
+      "face_height": "213",
+      "face_width": "300",
+      "id_format_category": "9",
+      "id_format_size": "5500",
+      "libelle": "Calendrier prestige"
+    }
   },
   "cover": {
     "front": {
