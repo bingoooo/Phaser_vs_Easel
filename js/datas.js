@@ -1,13 +1,17 @@
 // default datas
-var datas = {
+var defaultJson = {
   "backgroundColor": "#ffffff",
   "format": {
     "id": "10011",
-    "description": "cartes 15x14, double volet, pas de couverture, pas d'ajout de scène, scènes min = 2, scènes max = 2",
-    "fond_perdu": 1.5,
-    "largeur": 303,
-    "hauteur": 143,
-    "dpi": 300
+    "formatSize": {
+      "bleed": "1.5",
+      "face_dpi": "300",
+      "face_height": "143",
+      "face_width": "303",
+      "id_format_category": "8",
+      "id_format_size": "10010",
+      "libelle": "Cartes 15x14 double volet (R)"
+    }
   },
   "cover": false,
   "scenes": [
@@ -595,28 +599,47 @@ var datas = {
 // Loading datas
 var url = "/data/prestige.json";
 
+// check de la valeur dans la query
+function checkQueryValue(name) {
+  var query = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(query);
+  if (!results) return false;
+  if (!results[2]) return false;
+  if (results[2]) return results[2];
+  return results;
+}
+
+
 function getDatas(url) {
   if (self.fetch) {
-    console.log("using fetch");
     fetch(url)
       .then(function (response) {
         if (response.ok) {
-          console.log("fetch response", response);
-          return response.json().then(function(json){
+          //console.log("fetch response", response);
+          return response.json().then(function (json) {
             datas = json;
             drawSVG(datas);
           });
         } else {
-          console.log("bad server response");
+          //console.log("bad server response");
+          datas = defaultJson;
+          drawSVG(datas);
         }
       })
       .catch(function (error) {
-        console.log("error found", error);
+        //console.log("error found", error);
+        datas = defaultJson;
+        drawSVG(datas);
       });
   } else {
-    console.log("no fetch command, using default http request is required");
+    //console.log("no fetch command, using default http request is required. Loading with default JSON");
+    datas = defaultJson;
+    drawSVG(datas);
     return { error: "no fetch, http request not implemented" };
   }
 }
-
-getDatas(url);
+url = "/data/" + checkQueryValue('json') + ".json";
+setTimeout(function () {
+  getDatas(url);
+}, 100);
